@@ -1,3 +1,26 @@
+//方法一：双指针，写法简单
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        //1.设置左指针i，右指针n（表示最后数组的长度）
+        int i = 0;
+        int n = nums.length;
+        while(i < n){
+            //当nums[i]找到val，将其与末尾元素交换，然后舍去最后一个元素(n--)。
+            if(nums[i] == val){
+                nums[i] = nums[n - 1];
+                n--;
+            }
+            else{
+                //如果没有找到val，则继续移动指针i
+                i++;
+            }
+        }
+        return n;
+    }
+}
+
+
+//方法二：双指针，写法复杂
 class Solution {
     public int removeElement(int[] nums, int val) {
         if(nums == null || nums.length == 0){
