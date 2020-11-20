@@ -1,3 +1,4 @@
+//方法一：双指针
 class Solution {
     public int removeDuplicates(int[] nums) {
         //1.特殊情况
