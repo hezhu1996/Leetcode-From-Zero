@@ -10,6 +10,8 @@ class Solution {
         }
         //2.双指针
         //j初始化为以，因为第一个值肯定需要计入数组；只有前后两数不相等时才移动j并存入数组。
+        //j = result的指针
+        //i = curr遍历时的指针
         int j = 1;
         for(int i = 1; i < nums.length; i++){
             if(nums[i] != nums[i - 1]){
