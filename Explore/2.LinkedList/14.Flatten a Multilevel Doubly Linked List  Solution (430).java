@@ -1,4 +1,5 @@
 //14.Flatten a Multilevel Doubly Linked List  Solution (430)
+//方法一：链表操作
 class Solution {
     public Node flatten(Node head) {
         //1.特殊情况
@@ -34,3 +35,4 @@ class Solution {
         return head;
     }
 }
+//方法二：DFS(递归+迭代)

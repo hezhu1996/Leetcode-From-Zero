@@ -21,6 +21,17 @@ while(headB != null)
 //链表最后一个点，不需要处理
 while(headB.next != null)
 
+//dummyHead保证prev指针永远不为0
+
+//在最后一个节点停住
+while(ptr.next != null){
+    ptr = ptr.next;
+}
+//在最后一个节点之后(null)挺住
+while(ptr != null){
+    ptr = ptr.next;
+}
+
 //------------------------------------------ Two Pointer ------------------------------------------ 
 //模板
 // Initialize slow & fast pointers
