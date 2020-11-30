@@ -15,7 +15,7 @@ if(root == null){
     //返回某值
     return;
 }
-//2.更新result
+//2.如果root是一个叶子节点，更新answer
 
 //3.递归左右子树
 left_answer = top_down(root.left, left_params);
