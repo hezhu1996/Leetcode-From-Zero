@@ -30,11 +30,33 @@ return answer;
 
 1. [二叉树的最大深度](05.二叉树的最大深度.md)
 
+![image-20201130101416359](pic/image-20201130101416359.png)
+
+# 自下而上(Bottom-up)模板套路
 
 
 
+1. 首先计算左右子树的结果，通过**返回的结果**以及**当前节点**进行一些计算操作来得到答案。
+2. 可以看做是一种**后序遍历**：左右根
 
+#### 套路模板
 
+```java
+//递归出口条件
+if(root == null){
+    return;
+}
+//计算左右子树
+left_answer = bottom_up(root.left);
+right_answer = bottom_up(root.right);
+
+//利用左右子树的值，返回本节点的结果
+return operation(left_answer, right_answer);
+```
+
+相关练习：
+
+1. [二叉树的最大深度](05.二叉树的最大深度.md)
 
 
 
