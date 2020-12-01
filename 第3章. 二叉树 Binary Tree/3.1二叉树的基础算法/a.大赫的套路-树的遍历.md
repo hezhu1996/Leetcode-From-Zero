@@ -1,5 +1,18 @@
 # 树的遍历
 
+#### 递归法·套路模板
+
+```java
+/* 二叉树遍历框架 */
+public void traverse(TreeNode root) {
+    // 前序遍历
+    traverse(root.left)
+    // 中序遍历
+    traverse(root.right)
+    // 后序遍历
+}
+```
+
 #### 迭代法·套路模板：
 
 使用stack控制TreeNode节点

@@ -42,23 +42,31 @@ return answer;
 #### 套路模板
 
 ```java
-//递归出口条件
-if(root == null){
-    return;
-}
-//计算左右子树
-left_answer = bottom_up(root.left);
-right_answer = bottom_up(root.right);
 
-//利用左右子树的值，返回本节点的结果
-return operation(left_answer, right_answer);
+public boolean bottom_up(){
+    //递归出口条件
+    if(root == null){
+        return;
+    }
+    //计算左右子树
+    left_answer = bottom_up(root.left);
+    right_answer = bottom_up(root.right);
+
+    //利用左右子树的值，返回本节点的结果
+    return operation(left_answer, right_answer);
+}
+
 ```
 
 相关练习：
 
 1. [二叉树的最大深度](算法真题实践/05.二叉树的最大深度.md)
 
+#### 技术总结：
 
+* 递归算法的关键要明确函数的定义，相信这个定义，而不要跳进递归细节。
+* 写二叉树的算法题，都是基于**递归框架**的，我们先要**搞清楚root节点它自己要做什么**，然后根据题目要求选择使用前序，中序，后续的递归框架。
+* 二叉树题目的难点在于如何通过题目的要求**思考出每一个节点需要做什么**
 
 
 
