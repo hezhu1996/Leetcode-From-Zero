@@ -54,7 +54,7 @@ while(!stack.isEmpty() || node != null){
 
 # 栈(stack)的使用
 
-![å¨è¿éæå¥å¾çæè¿°](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/master/img/2020053121015811.png)
+![2020053121015811](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/2020053121015811.png)
 
 **不建议**使用stack：效率低，synchronize的问题
 

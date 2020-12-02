@@ -1,4 +1,4 @@
-![image-20201129162559539](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/master/img/image-20201129162559539.png)
+![image-20201129162559539](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20201129162559539.png)
 
 # 自顶而下(Top-down)模板套路
 
@@ -30,7 +30,7 @@ return answer;
 
 1. [二叉树的最大深度](05.二叉树的最大深度.md)
 
-![image-20201130101416359](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/master/img/image-20201130101416359.png)
+![image-20201201222327924](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20201201222327924.png)
 
 # 自下而上(Bottom-up)模板套路
 
