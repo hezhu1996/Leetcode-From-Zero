@@ -1,4 +1,4 @@
-![image-20201129162559539](算法真题实践/pic/image-20201129162559539.png)
+![image-20201129162559539](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/master/img/image-20201129162559539.png)
 
 # 自顶而下(Top-down)模板套路
 
@@ -30,7 +30,7 @@ return answer;
 
 1. [二叉树的最大深度](05.二叉树的最大深度.md)
 
-![image-20201130101416359](pic/image-20201130101416359.png)
+![image-20201130101416359](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/master/img/image-20201130101416359.png)
 
 # 自下而上(Bottom-up)模板套路
 
@@ -67,6 +67,8 @@ public boolean bottom_up(){
 * 递归算法的关键要明确函数的定义，相信这个定义，而不要跳进递归细节。
 * 写二叉树的算法题，都是基于**递归框架**的，我们先要**搞清楚root节点它自己要做什么**，然后根据题目要求选择使用前序，中序，后续的递归框架。
 * 二叉树题目的难点在于如何通过题目的要求**思考出每一个节点需要做什么**
+* **把题目的要求细化，搞清楚根节点应该做什么，然后剩下的事情抛给前/中/后序的遍历框架就行了**
+* 我们千万不要跳进递归的细节里，你的脑袋才能压几个栈呀
 
 
 
