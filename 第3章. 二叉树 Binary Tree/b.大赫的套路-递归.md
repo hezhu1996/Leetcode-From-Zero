@@ -1,6 +1,6 @@
 ![image-20201129162559539](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20201129162559539.png)
 
-# 自顶而下(Top-down)模板套路
+## 1. 自顶而下(Top-down)模板套路
 
 1. 首先访问根节点root，对其进行一些操作或返回某些值。
 2. 将返回的值传递到其左右子树中。
@@ -32,7 +32,7 @@ return answer;
 
 ![image-20201201222327924](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20201201222327924.png)
 
-# 自下而上(Bottom-up)模板套路
+## 2. 自下而上(Bottom-up)模板套路
 
 
 
@@ -62,7 +62,7 @@ public boolean bottom_up(){
 
 1. [二叉树的最大深度](算法真题实践/05.二叉树的最大深度.md)
 
-#### 技术总结：
+## 3. 技术总结：
 
 * 递归算法的关键要明确函数的定义，相信这个定义，而不要跳进递归细节。
 * 写二叉树的算法题，都是基于**递归框架**的，我们先要**搞清楚root节点它自己要做什么**，然后根据题目要求选择使用前序，中序，后续的递归框架。

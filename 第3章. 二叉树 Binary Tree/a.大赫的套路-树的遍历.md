@@ -1,6 +1,6 @@
 # 树的遍历
 
-#### 递归法·套路模板
+## 1. 递归法·套路模板
 
 ```java
 /* 二叉树遍历框架 */
@@ -13,7 +13,11 @@ public void traverse(TreeNode root) {
 }
 ```
 
-#### 迭代法·套路模板：
+何时使用**前中后**序遍历？
+
+* 根据题意，思考一个**二叉树节点需要做什么**，到底用什么遍历顺序就清楚了
+
+## 2. 迭代法·套路模板：
 
 使用stack控制TreeNode节点
 
@@ -61,11 +65,11 @@ while(!stack.isEmpty() || node != null){
 Stack：上进上出
 Deque：上进上出，上进下出，甚至下进上出
 
-### 1. 栈(stack)的一般初始化
+## 1. 栈(stack)的一般初始化
 
 `Deque<TreeNode> stack = new LinkedList<>();`
 
-### 2. ArrayDeque和LinkedList区别
+## 2. ArrayDeque和LinkedList区别
 
 **ArrayDeque:**
 
@@ -79,7 +83,7 @@ Deque：上进上出，上进下出，甚至下进上出
 * 插入元素可以为null
 * 无法确定数据容量，有更好表现
 
-### 3. Deque中的常用方法
+## 3. Deque中的常用方法
 
 #### 3.1 Deque当做·栈·使用
 
