@@ -24,7 +24,7 @@ void traverse(TreeNode root) {
 }
 ```
 
-![img](https://mmbiz.qpic.cn/sz_mmbiz_jpg/gibkIz0MVqdFJlkkg2icueWtNAuPtHuQ6vmOfpGWptTgHonJR8qH2TdSltf8jQ5mNMkQxm7gxicib8a9HBIibEibicL2Q/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20201203114314652](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20201203114314652.png)
 
 * 将二叉树打平到String中
 
@@ -119,7 +119,7 @@ void serialize(TreeNode root, StringBuilder sb) {
 }
 ```
 
-![img](https://mmbiz.qpic.cn/sz_mmbiz_jpg/gibkIz0MVqdFJlkkg2icueWtNAuPtHuQ6vnQboPZnF6qr44lBms2DvX6qOwryAqHxocSbnD35oI6iaQ5EBAXeU9oA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20201203114329093](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20201203114329093.png)
 
 
 
@@ -246,7 +246,7 @@ String serialize(TreeNode root) {
 
 层级遍历序列化得出的结果如下图：
 
-![img](https://mmbiz.qpic.cn/sz_mmbiz_jpg/gibkIz0MVqdFJlkkg2icueWtNAuPtHuQ6vGacpwC9O4glRuaDHoEFdDcfmnNzR0jLd8ttXaF7chbz4icfjQc87GSw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![image-20201203114345654](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20201203114345654.png)
 
 ## 7.层级遍历的Deserialize
 
