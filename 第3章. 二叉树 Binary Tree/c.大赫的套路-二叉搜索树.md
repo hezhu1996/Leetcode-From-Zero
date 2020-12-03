@@ -101,15 +101,62 @@ boolean isInBST(TreeNode root, int target) {
 }
 ```
 
+## 5. 插入一个数
 
+* 一旦涉及「改」，函数就要**返回TreeNode类型**
+* 对**递归**调用的**返回值进行接收**
 
+```java
+TreeNode insertIntoBST(TreeNode root, int val) {
+    // 找到空位置插入新节点
+    if (root == null) return new TreeNode(val);
+    // if (root.val == val)
+    // BST 中一般不会插入已存在元素
+    if (root.val < val) 
+        root.right = insertIntoBST(root.right, val);
+    if (root.val > val) 
+        root.left = insertIntoBST(root.left, val);
+    return root;
+}
+```
 
+## 6. 删除一个数
 
+* 算法框架
 
+```java
+TreeNode deleteNode(TreeNode root, int key) {
+    if (root.val == key) {
+        // 找到啦，进行删除
+    } else if (root.val > key) {
+        // 去左子树找
+        root.left = deleteNode(root.left, key);
+    } else if (root.val < key) {
+        // 去右子树找
+        root.right = deleteNode(root.right, key);
+    }
+    return root;
+}
+```
 
+**情况 1**：`A`恰好是末端节点，两个子节点都为空，那么它可以当场去世了。
 
+![img](https://mmbiz.qpic.cn/sz_mmbiz_png/gibkIz0MVqdHDhO70O5T6qmmt2L4r8oGMxqOy6Djmkjice1mXhiaQ9tmtWHGTBg64ohcvHoGU3lTVlCJicnvufusmg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
+```java
+if (root.left == null && root.right == null)
+    return null;
+```
 
+**情况 2**：`A`只有一个非空子节点，那么它要让这个孩子接替自己的位置。
+
+![img](https://mmbiz.qpic.cn/sz_mmbiz_png/gibkIz0MVqdHDhO70O5T6qmmt2L4r8oGM1B3zc4tCQLU5jKDQSyEib5NpC9bIiaib4k7I3nCiaDhGKecibib7Sw03oT2w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
+```java
+// 排除了情况 1 之后
+if (root.left == null) return root.right;
+if (root.right == null) return root.left;
+```
 
 
 
