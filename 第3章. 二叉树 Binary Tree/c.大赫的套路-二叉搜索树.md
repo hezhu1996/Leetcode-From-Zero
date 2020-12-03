@@ -158,11 +158,64 @@ if (root.left == null) return root.right;
 if (root.right == null) return root.left;
 ```
 
+**情况 3**：`A`有两个子节点，麻烦了，为了不破坏 BST 的性质，`A`必须找到**左子树中最大**的那个节点，或者**右子树中最小**的那个节点来接替自己。我们以第二种方式讲解。
 
+![img](https://mmbiz.qpic.cn/sz_mmbiz_png/gibkIz0MVqdHDhO70O5T6qmmt2L4r8oGMeoAeGRrjVuIdyKnCkS5MRibFTSIEl554dfmg1eQVWR2EumpHkW9uI5Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
+```java
+if (root.left != null && root.right != null) {
+    // 找到右子树的最小节点
+    TreeNode minNode = getMin(root.right);
+    // 把 root 改成 minNode
+    root.val = minNode.val;
+    // 转而去删除 minNode
+    root.right = deleteNode(root.right, minNode.val);
+}
+```
 
+三种情况分析完毕，填入框架，简化一下代码：
 
+```java
+TreeNode deleteNode(TreeNode root, int key) {
+    if (root == null) return null;
+    if (root.val == key) {
+        // 这两个 if 把情况 1 和 2 都正确处理了
+        if (root.left == null) return root.right;
+        if (root.right == null) return root.left;
+        // 处理情况 3
+        TreeNode minNode = getMin(root.right);
+        root.val = minNode.val;
+        root.right = deleteNode(root.right, minNode.val);
+    } else if (root.val > key) {
+        root.left = deleteNode(root.left, key);
+    } else if (root.val < key) {
+        root.right = deleteNode(root.right, key);
+    }
+    return root;
+}
 
+TreeNode getMin(TreeNode node) {
+    // BST 最左边的就是最小的
+    while (node.left != null) node = node.left;
+    return node;
+} 
+```
+
+## 技术总结：
+
+1.  如果当前节点会**对下面的子节点有整体影响**，可以通过**辅助函数增长参数列表**，借助参数传递信息。
+2. 在二叉树递归框架之上，扩展出一套 BST 代码框架：
+
+```java
+void BST(TreeNode root, int target) {
+    if (root.val == target)
+        // 找到目标，做点什么
+    if (root.val < target) 
+        BST(root.right, target);
+    if (root.val > target)
+        BST(root.left, target);
+}
+```
 
 
 
