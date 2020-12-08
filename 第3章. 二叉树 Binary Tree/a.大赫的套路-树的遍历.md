@@ -1,6 +1,6 @@
 # 树的遍历
 
-## 1. 递归法·套路模板
+## 1. 递归法·模板框架
 
 ```java
 /* 二叉树遍历框架 */
@@ -17,7 +17,7 @@ public void traverse(TreeNode root) {
 
 * 根据题意，思考一个**二叉树节点需要做什么**，到底用什么遍历顺序就清楚了
 
-## 2. 迭代法·套路模板：
+## 2. 迭代法·模板框架
 
 使用stack控制TreeNode节点
 
@@ -50,11 +50,40 @@ while(!stack.isEmpty() || node != null){
 }
 ```
 
-[前序遍历套路](算法真题实践/01.二叉树的前序遍历.md)
+[前序遍历套路](3.1二叉树的基础算法/01.二叉树的前序遍历.md)
 
-[中序遍历套路](算法真题实践/02.二叉树的中序遍历.md)
+[中序遍历套路](3.1二叉树的基础算法/02.二叉树的中序遍历.md)
 
-[后序遍历套路](算法真题实践/03.二叉树的后序遍历.md)
+[后序遍历套路](3.1二叉树的基础算法/03.二叉树的后序遍历.md)
+
+## 3.层序遍历·模板框架
+
+```java
+void traverse(TreeNode root) {
+    if (root == null) return;
+    // 初始化队列，将 root 加入队列
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+
+    while (!q.isEmpty()) {
+        TreeNode cur = q.poll();
+
+        /* 层级遍历代码位置 */
+        System.out.println(root.val);
+        /*****************/
+
+        if (cur.left != null) {
+            q.offer(cur.left);
+        }
+
+        if (cur.right != null) {
+            q.offer(cur.right);
+        }
+    }
+}
+```
+
+
 
 # 栈(stack)的使用
 

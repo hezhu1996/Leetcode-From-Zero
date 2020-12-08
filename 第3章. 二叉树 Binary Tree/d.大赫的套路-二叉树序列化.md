@@ -159,7 +159,7 @@ TreeNode deserialize(LinkedList<String> nodes) {
 * 行不通
 * 反序列化无法找到root
 
-## 6. 层级遍历的Serialize
+## 6. 层序遍历的Serialize
 
 * 代码框架
 

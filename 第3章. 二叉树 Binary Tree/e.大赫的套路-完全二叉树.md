@@ -54,7 +54,7 @@ public int countNodes(TreeNode root) {
 * 如果其中某棵**子树**是**满二叉树**，可以快速使用 Math.pow 返回其数量。
 * 复杂度：**O(logN * logN)**
   * 算法的递归深度就是树的高度 O(logN)
-    * 直觉递归所有节点需要 O(N)，但是**这两个递归只有一个会真的递归下去，另一个一定会触发`hl == hr`而立即返回，不会递归下去**
+    * 直觉递归所有节点需要 O(N)，但是**这两个递归只有一个会真的递归下去，另一个一定会触发`hl == hr`而立即返回，不会递归下去。由于完全二叉树的性质，其子树一定有一棵是满的。**
   * 每次递归所花费的时间就是 while 循环，需要 O(logN)
 
 ![image-20201203143841491](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20201203143841491.png)
