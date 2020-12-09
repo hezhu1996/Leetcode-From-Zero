@@ -103,6 +103,16 @@ TreeNode deserialize(LinkedList<String> nodes) {
 ## 3. 后序遍历的Serialize
 
 ```java
+String SEP = ",";
+String NULL = "#";
+
+/* 主函数，将二叉树序列化为字符串 */
+String serialize(TreeNode root) {
+    StringBuilder sb = new StringBuilder();
+    serialize(root, sb);
+    return sb.toString();
+}
+
 /* 辅助函数，将二叉树存入 StringBuilder */
 void serialize(TreeNode root, StringBuilder sb) {
     if (root == null) {
@@ -146,7 +156,7 @@ TreeNode deserialize(LinkedList<String> nodes) {
     String last = nodes.removeLast();
     if (last.equals(NULL)) return null;
     TreeNode root = new TreeNode(Integer.parseInt(last));
-    // 限构造右子树，后构造左子树
+    // 必须先构造右子树，后构造左子树
     root.right = deserialize(nodes);
     root.left = deserialize(nodes);
 
