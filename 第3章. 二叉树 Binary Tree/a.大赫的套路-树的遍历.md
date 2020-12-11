@@ -56,7 +56,7 @@ while(!stack.isEmpty() || node != null){
 
 [后序遍历套路](3.1二叉树的基础算法/03.二叉树的后序遍历.md)
 
-## 3.层序遍历·模板框架
+## 3. BFS层序遍历·模板框架
 
 ```java
 void traverse(TreeNode root) {
