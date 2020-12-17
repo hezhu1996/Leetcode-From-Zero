@@ -40,11 +40,11 @@ def backtrack(路径, 选择列表):
         撤销选择
 ```
 
-
+* 选择列表：过滤后的**下一个决策**
 
 我们定义的`backtrack`函数其实就像一个指针，在这棵树上游走，同时要正确维护每个节点的属性，每当走到树的底层，其「路径」就是一个全排列
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_jpg/gibkIz0MVqdF1umAdyXuPq54ibw7X23mnaGJiambtpqc4vkhsqZYoEZWianibsImtDvmXRMCJuUB8gkLfCJVAQDt2RA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![1](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/1.jpg)
 
 * 遍历一棵多叉树
 
@@ -59,13 +59,13 @@ void traverse(TreeNode root) {
 
 **而所谓的前序遍历和后序遍历，他们只是两个很有用的时间点**
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_jpg/gibkIz0MVqdF1umAdyXuPq54ibw7X23mnajTgCl3dL1z2wJpbvdfiaM1dMuCqPOO5JxicOgiaQAmQBJfZCwAbIxfFmQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![2 (2)](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/2%20(2).jpg)
 
 * **前序遍历的代码在进入某一个节点之前的那个时间点执行，后序遍历代码在离开某个节点之后的那个时间点执行**
 
 「路径」和「选择」是每个节点的属性，函数在树上游走要正确维护节点的属性，那么就要在这两个特殊时间点搞点动作：
 
-![图片](https://mmbiz.qpic.cn/sz_mmbiz_jpg/gibkIz0MVqdF1umAdyXuPq54ibw7X23mnaR2cbSJabtrWQtib7OP5ZrSicZY2IOZibsia5dlibcvWhlQC1TibO97yia6mQA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![3](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/3.jpg)
 
 ```java
 for 选择 in 选择列表:
