@@ -101,7 +101,7 @@ void traverse(TreeNode root) {
 }
 ```
 
-## BFS 模板实操二
+## BFS 模板实操二(重点)
 
 * 有for循环，对每一层节点进行遍历
 
