@@ -8,6 +8,6 @@
 
 
 
-# 第4章.队列和栈Queue&Stack
-## 4.1队列和BFS
+## 第4章.队列和栈Queue&Stack
+### 4.1队列和BFS
 * [01.设计循环队列.md](第4章.队列和栈Queue&Stack/4.1队列和BFS/01.设计循环队列.md)
