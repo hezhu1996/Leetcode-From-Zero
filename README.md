@@ -1,4 +1,4 @@
-# 大赫小少爷的算法宝典
+# 大赫的算法宝典
 
 [Java基础语法与数据结构](https://github.com/TWDH/JavaBasic)
 
