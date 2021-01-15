@@ -3,7 +3,72 @@
 * **BFS 找到的路径一定是最短的，但代价就是空间复杂度比 DFS 大很多**
 * 本质上就是一幅「图」，让你从一个起点，走到终点，问最短路径。这就是 BFS 的本质
 
-## BFS 模板一：
+## BFS 模板(重点)
+
+* 有for循环，对每一层节点进行遍历
+
+```java
+// 计算从起点 start 到终点 target 的最近距离
+int BFS(Node start, Node target) {
+    Queue<Node> q; // 核心数据结构
+    Set<Node> visited; // 避免走回头路
+
+    q.offer(start); // 将起点加入队列
+    visited.add(start);
+    int step = 0; // 记录扩散的步数
+
+    while (q not empty) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散 */
+        for (int i = 0; i < sz; i++) {
+            Node cur = q.poll();
+            /* 划重点：这里判断是否到达终点 */
+            if (cur is target)
+                return step;
+            /* 将 cur 的相邻节点加入队列 */
+            for (Node x : cur.adj())
+                if (x not in visited) {
+                    q.offer(x);
+                    visited.add(x);
+                }
+        }
+        /* 划重点：更新步数在这里 */
+        step++;
+    }
+}
+```
+
+* 层序遍历：只遍历
+* 没有for循环遍历每一层节点，只是将所有节点都打印出来
+
+```java
+void traverse(TreeNode root) {
+    if (root == null) return;
+    // 初始化队列，将 root 加入队列
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+
+    while (!q.isEmpty()) {
+        TreeNode cur = q.poll();
+
+        /* 层级遍历代码位置 */
+        System.out.println(root.val);
+        /*****************/
+
+        if (cur.left != null) {
+            q.offer(cur.left);
+        }
+
+        if (cur.right != null) {
+            q.offer(cur.right);
+        }
+    }
+}
+```
+
+
+
+## LeetCode 模板一：
 
 ```java
 /**
@@ -33,8 +98,6 @@ int BFS(Node root, Node target) {
     return -1;          // there is no path from root to target
 }
 ```
-
-## BFS 模板二：
 
 * 保证每个节点**只访问一次**，防止进入死循环。
 * 加入hashset
@@ -70,91 +133,6 @@ int BFS(Node root, Node target) {
     return -1;          // there is no path from root to target
 }
 ```
-
-## BFS 模板实操
-
-* 层序遍历：只遍历
-* 没有for循环遍历每一层节点，只是将所有节点都打印出来
-
-```java
-void traverse(TreeNode root) {
-    if (root == null) return;
-    // 初始化队列，将 root 加入队列
-    Queue<TreeNode> q = new LinkedList<>();
-    q.offer(root);
-
-    while (!q.isEmpty()) {
-        TreeNode cur = q.poll();
-
-        /* 层级遍历代码位置 */
-        System.out.println(root.val);
-        /*****************/
-
-        if (cur.left != null) {
-            q.offer(cur.left);
-        }
-
-        if (cur.right != null) {
-            q.offer(cur.right);
-        }
-    }
-}
-```
-
-## BFS 模板实操二(重点)
-
-* 有for循环，对每一层节点进行遍历
-
-```java
-// 计算从起点 start 到终点 target 的最近距离
-int BFS(Node start, Node target) {
-    Queue<Node> q; // 核心数据结构
-    Set<Node> visited; // 避免走回头路
-
-    q.offer(start); // 将起点加入队列
-    visited.add(start);
-    int step = 0; // 记录扩散的步数
-
-    while (q not empty) {
-        int sz = q.size();
-        /* 将当前队列中的所有节点向四周扩散 */
-        for (int i = 0; i < sz; i++) {
-            Node cur = q.poll();
-            /* 划重点：这里判断是否到达终点 */
-            if (cur is target)
-                return step;
-            /* 将 cur 的相邻节点加入队列 */
-            for (Node x : cur.adj())
-                if (x not in visited) {
-                    q.offer(x);
-                    visited.add(x);
-                }
-        }
-        /* 划重点：更新步数在这里 */
-        step++;
-    }
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
