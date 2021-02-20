@@ -1,89 +1,67 @@
 ## Q1
 
-```java
-// How many constructor are there used in this program?
-public class Test{
-    private int x;
-
-    public Test(){
-        x=35;
-    }
-
-    public void Test(double f){
-        This.x=(int)f;
-    }
-
-    public Test(String s){}
-}
-//A:0
-//B:1
-//C:2 (x)
-//D:3
-//E:4
-```
+- Choose one of the following that is not the Basic Data Type?
+  1. byte
+  2. int
+  3. char
+  4. long
+  5. *String*    
 
 ## Q2.
 
+* What should be filled in the /*QUESTION*/ area?
+  1. extend
+  2. abstract
+  3. public
+  4. private
+  5. *implements*
+
 ```java
-//Please select the correct result of i, j, k
-public class Test{
-    public static void main(){
-        int i = 1;
-        i = i++;
-        int j = i++;
-        int k = i + ++i * i++;
-        System.out.println(i);
-        System.out.println(j);
-        System.out.println(k);
-            
+public interface Student{
+    void Hello();
+}
+
+public class EngineerStudent /*QUESTION*/ Student{
+    public void Hello() {
+        System.out.println("The is Engineering Student");
     }
 }
-//A. i=4, j=1, k=11 (x)
-//B. i=4, j=2, k=19  
-//C. i=5, j=3, k=19
-//D. i=5, j=3, k=20
-//E. i=1, j=2, k=11
+
+public class MedicalStudent /*QUESTION*/ Student{
+    public void Hello() {
+        System.out.println("The is Medical Student");
+    }
+}
 ```
 
 ## Q3
 
-```java
-//which of the following is TRUE?
-//A. boolean = 1;
-//B. boolean a = (9 >= 10); (x)
-//C. boolean a="true";
-//D. boolean a = = false;
-```
+* The class "child" implements the class "parent", the "parent" has methods earnMoney, Eat, Walk and Sleep. the "child" has methods Eat, Walk and Sleep. What will happen if you execute "earnMoney" method with a child object?
+  1. Run successfully
+  2. Run successfully with warning
+  3. *Can not run because "earnMoney" haven't defined yet*
 
 ## Q4
 
-```java
-//The result of the following equation is (11+3*8)/4%3 ?
-//A:31
-//B:0
-//C:1
-//D:2(x)
-//E:5
-```
+* The keyword **implements** is used to express the relationship between the______.
+  1. *class and the interface*
+  2. class and class
+  3. interface and interface
+  4. abstract and interface
 
 ## Q5
 
-```java
-//Which one can NOT be used as the loop condition?
-//A:i++ (x)
-//B:i>5
-//C:bEqual = str.equals("q");
-//D:count = = i;
-//E:j<=10
-```
+* which of the following is TRUE?
+  1. You can create instances of an interface by itself
+  2. A class can implement ("implements") interfaces only once
+  3. *An interface extend ("extends") several interfaces*
+  4. super() calls the parent class constructor with arguments
 
 ## Q6
 
-```java
-//Which one of the following is NOT true?
-//A: "john" = = "john"
-//B:"john".equals("john")
-//C:"john" = "john" (x)
-//D:"john".equals(new String("john"))
-```
+* which of the following is NOT TRUE?
+  * every class inherits the method boolean equals(Object obj)
+  * String and Integer inherits from the class Object
+  * *“==” and “equals” are the same anytime*
+  * The method equals is used to compare references variables
 
