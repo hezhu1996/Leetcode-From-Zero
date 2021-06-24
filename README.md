@@ -2,10 +2,15 @@
 
 ### 目录 Content
 * [1.LeetCode Explore](1.LeetCode%20Explore)
+  * Basic LeetCode problems, including data structure and algorithms.
 * [2.LeetCode Hot and Interview](./2.LeetCode%20Hot%20and&nbspInterview)
+  * LeetCode top Interview Questions and Hot Questions
 * [3.Nine Chapter](./3.九章算法2021)
+  * 2021 Nine Chapter, Notes and Recommended Problems in LintCode
 * [4.Java Basic Skill](./4.Java基础)
+  * Summary of Java Basic Things
 * [5.Java Interview Questions](./5.Java面试)
+  * Top Java Interview Questions
 * [剑指offer：国语图文题解(java)](https://github.com/TWDH/SwordPointOffer)
 
 ```
