@@ -23,46 +23,67 @@
 
 #### 2.如何定位垃圾
 
-1. 引用计数（ReferenceCount）
-2. 根可达算法(RootSearching)
+1. 引用计数（`ReferenceCount`）
+2. 根可达算法 (`RootSearching`)
+   - GC roots
+     - 线程栈变量 (JVM stack)
+     - 本地方法栈（Native method stack）
+     - 静态变量 (Static reference in method area)
+     - 常量池 (RUntime constant pool)
+     - JNI指针
+   - ![image-20210623095506115](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20210623095506115.png)
 
 #### 3.常见的垃圾回收算法
 
-1. 标记清除(mark sweep) - 位置不连续 产生碎片 效率偏低（两遍扫描）
-2. 拷贝算法 (copying) - 没有碎片，浪费空间
-3. 标记压缩(mark compact) - 没有碎片，效率偏低（两遍扫描，指针需要调整）
+1. 标记清除 (`mark sweep`) 
+   - 位置**不连续** 产生**碎片** 效率偏低（两遍扫描）
+2. 拷贝算法  (`copying`) 
+   - 没有碎片，**浪费空间**
+3. 标记压缩 (`mark compact`) 
+   - 没有碎片，**效率偏低**（两遍扫描，指针需要调整）+ (线程同步)
+   - 有用的对象，覆盖没用的地方
+   - 移动对象，效率低
 
 #### 4.JVM内存分代模型（用于分代垃圾回收算法）
 
 1. 部分垃圾回收器使用的模型
 
-   > 除Epsilon ZGC Shenandoah之外的GC都是使用逻辑分代模型
+   > - 除Epsilon ZGC Shenandoah之外的GC都是使用逻辑分代模型
    >
-   > G1是逻辑分代，物理不分代
+   > - G1是逻辑分代，物理不分代
    >
-   > 除此之外不仅逻辑分代，而且物理分代
+   > - 除此之外不仅逻辑分代，而且物理分代
 
-2. 新生代 + 老年代 + 永久代（1.7）Perm Generation/ 元数据区(1.8) Metaspace
-   1. 永久代 元数据 - Class
-   2. 永久代必须指定大小限制 ，元数据可以设置，也可以不设置，无上限（受限于物理内存）
-   3. 字符串常量 1.7 - 永久代，1.8 - 堆
-   4. MethodArea逻辑概念 - 永久代、元数据
+2. **新生代** + **老年代** + **永久代**（1.7）`Perm Generation` / **元数据**区 (1.8) `Metaspace`
+
+   1. 永久代 or 元数据
+      - 放置 `Class` 对象
+   2. 永久代：必须指定大小限制 （可能内存溢出）
+   3. 元数据：可以设置，也可以不设置，无上限（受限于物理内存）
+   4. 字符串常量 
+      - 1.7 - 永久代
+      - 1.8 - 堆
+   5. `MethodArea` 逻辑概念 - 永久代、元数据
+
+3. **新生代** = `Eden` + `2个suvivor区` 
    
-3. 新生代 = Eden + 2个suvivor区 
-   1. YGC回收之后，大多数的对象会被回收，活着的进入s0
-   2. 再次YGC，活着的对象eden + s0 -> s1
-   3. 再次YGC，eden + s1 -> s0
-   4. 年龄足够 -> 老年代 （15 CMS 6）
-   5. s区装不下 -> 老年代
+   1. `YGC` 回收之后，大多数的对象会被回收，**活着的进入s0** （拷贝到 `survior 0`），`Eden` 区完全清空。
+   2. 再次`YGC`，活着的对象 `eden + s0` -> `s1`（拷贝），  `eden + s0` 全部清空。完全清空效率最高
+   3. 再次`YGC`，`eden + s1` -> `s0`
+   4. 年龄足够 -> **老年代** （15；CMS 6），总是不被回收的对象，放到 `OLD` 区 
+   5. `survior` 区装不下 -> 老年代
+   6. ![image-20210623102023865](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20210623102023865.png)
    
-4. 老年代
+4. **老年代**
+   
    1. 顽固分子
-   2. 老年代满了FGC Full GC
+   2. **老年代满**： `FGC - Full GC`，整个堆内存回收
    
-5. GC Tuning (Generation)
-   1. 尽量减少FGC
-   2. MinorGC = YGC
-   3. MajorGC = FGC
+5. **GC Tuning** (Generation) 调优
+   
+   1. 尽量**减少** `FGC`
+   2. `MinorGC` = `YGC`
+   3. `MajorGC` = `FGC`
    
 6. 对象分配过程图
    ![](对象分配过程详解.png)
@@ -76,22 +97,23 @@
 
 #### 5.常见的垃圾回收器
 
-![常用垃圾回收器](常用垃圾回收器.png)
+![image-20210623102851905](https://raw.githubusercontent.com/TWDH/Leetcode-From-Zero/pictures/img/image-20210623102851905.png)
 
-1. JDK诞生 Serial追随 提高效率，诞生了PS，为了配合CMS，诞生了PN，CMS是1.4版本后期引入，CMS是里程碑式的GC，它开启了并发回收的过程，但是CMS毛病较多，因此目前任何一个JDK版本默认是CMS
+1. JDK 诞生 `Serial` 追随 提高效率，诞生了PS，为了配合CMS，诞生了PN，CMS是1.4版本后期引入，CMS是里程碑式的GC，它开启了并发回收的过程，但是CMS毛病较多，因此目前任何一个JDK版本默认是CMS
    并发垃圾回收是因为无法忍受STW
-2. Serial 年轻代 串行回收
-3. PS 年轻代 并行回收
-4. ParNew 年轻代 配合CMS的并行回收
-5. SerialOld 
-6. ParallelOld
-7. ConcurrentMarkSweep 老年代 并发的， 垃圾回收和应用程序同时运行，降低STW的时间(200ms)
-   CMS问题比较多，所以现在没有一个版本默认是CMS，只能手工指定
-   CMS既然是MarkSweep，就一定会有碎片化的问题，碎片到达一定程度，CMS的老年代分配对象分配不下的时候，使用SerialOld 进行老年代回收
-   想象一下：
-   PS + PO -> 加内存 换垃圾回收器 -> PN + CMS + SerialOld（几个小时 - 几天的STW）
-   几十个G的内存，单线程回收 -> G1 + FGC 几十个G -> 上T内存的服务器 ZGC
-   算法：三色标记 + Incremental Update
+2. `Serial`：年轻代，**串行**回收
+3. `Parallel Scavenge`： 年轻代， **并行**回收
+4. `ParNew`： 年轻代，配合 `CMS` 的并行回收
+5. `SerialOld` ：老年代，串行回收
+6. `ParallelOld`：老年代，并行回收
+7. `ConcurrentMarkSweep`：
+   - 老年代，并发的， 垃圾回收和应用程序同时运行，降低STW的时间(200ms)
+      CMS问题比较多，所以现在没有一个版本默认是CMS，只能手工指定
+      CMS既然是MarkSweep，就一定会有碎片化的问题，碎片到达一定程度，CMS的老年代分配对象分配不下的时候，使用SerialOld 进行老年代回收
+      想象一下：
+      PS + PO -> 加内存 换垃圾回收器 -> PN + CMS + SerialOld（几个小时 - 几天的STW）
+      几十个G的内存，单线程回收 -> G1 + FGC 几十个G -> 上T内存的服务器 ZGC
+      算法：三色标记 + Incremental Update
 8. G1(10ms)
    算法：三色标记 + SATB
 9. ZGC (1ms) PK C++
@@ -108,7 +130,7 @@
     4. G1 - 上百G
     5. ZGC - 4T - 16T（JDK13）
 
-1.8默认的垃圾回收：PS + ParallelOld
+**1.8** 默认的垃圾回收：`Parallel Scavenge` + `ParallelOld`
 
 ### 常见垃圾回收器组合参数设定：(1.8)
 
