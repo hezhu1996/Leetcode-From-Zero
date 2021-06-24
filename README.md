@@ -9,7 +9,6 @@
 * [剑指offer：国语图文题解(java)](https://github.com/TWDH/SwordPointOffer)
 
 ```
-.
 ├─1.LeetCode Explore
 │  ├─第0章.集合(Collections)
 │  ├─第1章.数组和字符串(Array&String)
